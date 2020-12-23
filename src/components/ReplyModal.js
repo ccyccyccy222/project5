@@ -1,38 +1,57 @@
 import {connect} from 'react-redux';
-import { Modal, Button } from 'antd';
-import {setReplyModalVisible} from "../actions";
+import {Modal} from 'antd';
+import {changeReplyInput, setReplyModalVisible,addRelyItem} from "../actions";
+import {Input} from 'antd';
+import React from "react";
 
+const {TextArea} = Input;
 
-const ReplyModal=(props)=>{
-    let {replyMVisible,hideModal} = props
+const ReplyModal = (props) => {
+    let {replyMVisible, hideModal,inputValue,changeInputValue,addReply} = props
 
-    return(
+    return (
         <div>
-            <Modal title="Basic Modal" visible={replyMVisible} onOk={hideModal} onCancel={hideModal}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+            <Modal title="我的回答"
+                   visible={replyMVisible}
+                   onOk={addReply}
+                   okText="确定"
+                   cancelText="取消"
+                   onCancel={hideModal}
+                   style={{width: 100}}>
+                <TextArea
+                    placeholder={inputValue}
+                    onChange={changeInputValue}
+                    value={inputValue}
+                    rows={2}/>
             </Modal>
         </div>
 
-)
+    )
 }
 
 const stateToProps = (state) => {
     return {
-        replyMVisible: state.replyMVisible
+        replyMVisible: state.replyMVisible,
+        inputValue:state.replyInputValue,
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
         hideModal() {
-            dispatch(setReplyModalVisible (false))
+            dispatch(setReplyModalVisible(false))
+        },
+        changeInputValue(e) {
+            dispatch(changeReplyInput(e.target.value))
+        },
+        addReply(){
+            console.log("In addReply");
+            dispatch(addRelyItem())
         }
     }
 }
 
 
-export default connect(stateToProps,dispatchToProps)(ReplyModal);
+export default connect(stateToProps, dispatchToProps)(ReplyModal);
 
 

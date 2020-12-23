@@ -3,3 +3,12 @@ export const setReplyModalVisible = (replyMVisible) => ({
     replyMVisible
 });
 
+export const changeReplyInput = (inputValue) => ({
+    type: 'CHANGE_REPLY_INPUT',
+    inputValue
+});
+
+export const addRelyItem = () => ({
+    type: 'ADD_REPLY'
+});
+

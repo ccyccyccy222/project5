@@ -1,7 +1,7 @@
 import {Breadcrumb, PageHeader, Typography, Row, Button, Modal} from "antd";
 import {Link} from "react-router-dom";
 import React from "react";
-import "../book.css";
+// import "../book.css";
 import ReplyBrief from "../components/ReplyBrief";
 import {connect} from "react-redux";
 import {setReplyModalVisible} from "../actions";
@@ -46,32 +46,35 @@ const Question = ({dispatch}) => {
     );
 
     return (
-        <div className="book">
-            <div className="containerB">
-                <Breadcrumb>
-                    <Link to="/">
-                        <Breadcrumb.Item style={{fontSize: 20}}>Home</Breadcrumb.Item>
-                    </Link>
-                    <Link to="/book">
-                        <Breadcrumb.Item style={{fontSize: 20}}>book</Breadcrumb.Item>
-                    </Link>
-                    <Breadcrumb.Item style={{fontSize: 20}}>question</Breadcrumb.Item>
-                    {/*<a href="">Application Center</a>*/}
-                </Breadcrumb>
-                <PageHeader
-                    style={{width: 900}}
-                    className="site-page-header"
-                    title="近代史怎么考呀？考哪里呀？"
-                    avatar={{src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'}}
-                >
-                    <Content>
-                        {content}
-                    </Content>
-                </PageHeader>
-                <div className="questionsList">
-                    <ReplyBrief/>
+        <div>
+            <div className="book">
+                <div className="containerB">
+                    <Breadcrumb>
+                        <Link to="/">
+                            <Breadcrumb.Item style={{fontSize: 20}}>Home</Breadcrumb.Item>
+                        </Link>
+                        <Link to="/book">
+                            <Breadcrumb.Item style={{fontSize: 20}}>book</Breadcrumb.Item>
+                        </Link>
+                        <Breadcrumb.Item style={{fontSize: 20}}>question</Breadcrumb.Item>
+                        {/*<a href="">Application Center</a>*/}
+                    </Breadcrumb>
+                    <PageHeader
+                        style={{width: 900}}
+                        className="site-page-header"
+                        title="近代史怎么考呀？考哪里呀？"
+                        avatar={{src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'}}
+                    >
+                        <Content>
+                            {content}
+                        </Content>
+                    </PageHeader>
+                    <div className="questionsList">
+                        <ReplyBrief/>
+                    </div>
                 </div>
             </div>
+            <ReplyModal/>
         </div>
     // {/*<div>*/
     // }
