@@ -1,5 +1,5 @@
 
-html{
+html {
     background-color: aliceblue;
 }
 
@@ -14,8 +14,20 @@ html{
     /*width: 1200px;*/
 }
 
-.login{
+.nav{
+    width: 970px;
+    display: flex;
+    justify-content: space-between;
+}
 
+#change1{
+    /*display: none;*/
+    float: right;
+}
+
+#change2{
+    display: none;
+    float: right;
 }
 
 .content {

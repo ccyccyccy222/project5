@@ -1,9 +1,11 @@
 import React from "react";
 
 const initialState = {
-    replyMVisible:true,
-    replyInputValue:'',
-    replyData:[
+    loginMVisible: false,
+    ifLogin: false,
+    replyMVisible: false,
+    replyInputValue: '',
+    replyData: [
         {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
             author: 'Han Solo',
@@ -27,7 +29,7 @@ const initialState = {
             content: "好好看老师的ppt，上面都有的，考试范围也有\n"
         }
     ],
-    userName:"abc"
+    userName: "abc"
 }
 
 
@@ -46,22 +48,33 @@ export default (state = initialState, action) => {
         console.log(newState.replyInputValue)
     }
     if (action.type === 'ADD_REPLY') {
-        let replyItem={
-                // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-                author: 'Han Solo',
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                // content: (
-                //     <p>
-                //         除了后边新中国成立等等没学过的知识外，其他全考，加油吧！
-                //     </p>
-                // )
-                content: ''
-            };
-        replyItem.content=state.replyInputValue;
+        let replyItem = {
+            // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+            author: newState.userName,
+            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            // content: (
+            //     <p>
+            //         除了后边新中国成立等等没学过的知识外，其他全考，加油吧！
+            //     </p>
+            // )
+            content: ''
+        };
+        replyItem.content = state.replyInputValue;
         newState.replyData.push(replyItem);
-        newState.replyInputValue=''
+        newState.replyInputValue = ''
         console.log("newState. replyInputValue:")
         console.log(newState.replyInputValue)
+    }
+    if (action.type === 'LOGIN_MODAL_VISIBLE') {
+        newState.loginMVisible = action.loginMVisible
+        console.log("newState.loginMVisible:")
+        console.log(newState.loginMVisible)
+    }
+    if (action.type === 'SUB_LOGIN_FORM') {
+        newState.userName = action.loginValue.username
+        newState.ifLogin=true
+        console.log("newState.userName:")
+        console.log(newState.userName)
     }
 
     return newState

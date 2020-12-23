@@ -1,31 +1,37 @@
-import {Breadcrumb, Button, Card, Space} from 'antd';
+import {Breadcrumb, Button} from 'antd';
 import React from "react";
 import "../home.css";
 import jindaishi from '../img/jindaishi.jpg';
 import cyuyan from '../img/cyuyan.jpg';
 import makesi from '../img/makesi.jpg';
 import gaoshu from '../img/gaodengshuxue.jpg'
-import roll from "../function/lunbo";
 import {Link} from "react-router-dom";
-import {Provider} from "react-redux";
+import {connect} from "react-redux";
+import login from "../function/qiehuan";
+import LoginModal from "../components/LoginModal";
+import {setLoginModalVisible} from "../actions";
 
+const Home = (props) => {
 
-const Home = () => {
+    let{setLoginModal,userName}=props
 
-    // roll(50);
     return (
         <div className="home">
             <div className="container">
-                <Breadcrumb>
-                    <Breadcrumb.Item style={{fontSize: 20}}>Home</Breadcrumb.Item>
-                    {/*<a href="">Application Center</a>*/}
-                </Breadcrumb>
-                <div className="login">
-                    <Space>
-                        <Button type="link">登陆</Button>
+                <div className="nav">
+                    <Breadcrumb>
+                        <Breadcrumb.Item style={{fontSize: 20}}>Home</Breadcrumb.Item>
+                        {/*<a href="">Application Center</a>*/}
+                    </Breadcrumb>
+                    <div id="change1">
+                        <Button type="link" onClick={()=>setLoginModal(true)}>登陆</Button>
                         <Button type="link">注册</Button>
-                    </Space>
+                    </div>
+                    <div id="change2">
+                        <Button type="link">用户名：{userName}</Button>
+                    </div>
                 </div>
+
                 <div className="content">
                     <div className="card">
                         <div className="flex-item">
@@ -64,15 +70,42 @@ const Home = () => {
                                 <li>第七条</li>
                                 <li>第八条</li>
                                 <li>第九条</li>
+                                <li>第10条</li>
+                                <li>第11条</li>
+                                <li>第12条</li>
+                                <li>第13条</li>
+                                <li>第14条</li>
+                                <li>第15条</li>
+                                <li>第16条</li>
+                                <li>第17条</li>
+                                <li>第18条</li>
                             </ul>
                             <ul id="comment2"></ul>
                         </div>
 
                     </div>
                 </div>
+                <LoginModal/>
             </div>
         </div>
     )
 }
 
-export default Home;
+const stateToProps = (state) => {
+    return {
+        ifLogin: state.ifLogin,
+        userName:state.userName
+    }
+}
+
+const dispatchToProps = (dispatch) => {
+    return {
+        setLoginModal(){
+            console.log("setLoginModal");
+            dispatch(setLoginModalVisible(true))
+        }
+    }
+}
+
+
+export default connect(stateToProps,dispatchToProps)(Home);

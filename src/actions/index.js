@@ -12,3 +12,12 @@ export const addRelyItem = () => ({
     type: 'ADD_REPLY'
 });
 
+export const setLoginModalVisible = (loginMVisible) => ({
+    type: 'LOGIN_MODAL_VISIBLE',
+    loginMVisible
+});
+
+export const submitLoginValue = (loginValue) => ({
+    type: 'SUB_LOGIN_FORM',
+    loginValue
+});

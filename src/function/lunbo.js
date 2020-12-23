@@ -3,6 +3,10 @@ function roll(t) {
     let ul1 = document.querySelectorAll("#comment1");
     let ul2 = document.querySelectorAll("#comment2");
     let ulbox = document.querySelectorAll(".gundong");
+    console.log("ulbox");
+    console.log(ulbox);
+    console.log("ulbox.length");
+    console.log(ulbox.length);
     for (let i = 0; i < ul1.length; i++)
         ul2[i].innerHTML = ul1[i].innerHTML;
     // ulbox.scrollTop = 0; // 开始无滚动时设为0
