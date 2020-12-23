@@ -21,3 +21,17 @@ export const submitLoginValue = (loginValue) => ({
     type: 'SUB_LOGIN_FORM',
     loginValue
 });
+
+export const setQuestionModalVisible = (questionMVisible) => ({
+    type: 'QUES_MODAL_VISIBLE',
+    questionMVisible
+});
+
+export const submitQuestionValue = (quesValue) => ({
+    type: 'SUB_QUES_FORM',
+    quesValue
+});
+
+
+
+

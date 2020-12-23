@@ -70,15 +70,6 @@ const Home = (props) => {
                                 <li>第七条</li>
                                 <li>第八条</li>
                                 <li>第九条</li>
-                                <li>第10条</li>
-                                <li>第11条</li>
-                                <li>第12条</li>
-                                <li>第13条</li>
-                                <li>第14条</li>
-                                <li>第15条</li>
-                                <li>第16条</li>
-                                <li>第17条</li>
-                                <li>第18条</li>
                             </ul>
                             <ul id="comment2"></ul>
                         </div>

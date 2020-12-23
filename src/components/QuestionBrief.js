@@ -2,6 +2,7 @@ import { Comment, Tooltip, List } from 'antd';
 import moment from 'moment';
 import React from "react";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 const data = [
     {
@@ -26,25 +27,35 @@ const data = [
     },
 ];
 
-const QuestionBrief=()=>(
-    <List
-        className="comment-list"
-        header={`${data.length} questions`}
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
-            <Link to="/question">
-                <li>
-                    <Comment
-                        actions={item.actions}
-                        author={item.author}
-                        avatar={item.avatar}
-                        content={item.content}
-                    />
-                </li>
-            </Link>
-        )}
-    />
-)
+const QuestionBrief=(props)=>{
+    let{quesData}=props
+    return(
+        <List
+            className="comment-list"
+            header={`${quesData.length} questions`}
+            itemLayout="horizontal"
+            dataSource={quesData}
+            renderItem={item => (
+                <Link to="/question">
+                    <li>
+                        <Comment
+                            actions={item.actions}
+                            author={item.author}
+                            avatar={item.avatar}
+                            content={item.content}
+                        />
+                    </li>
+                </Link>
+            )}
+        />
+    )
+}
 
-export default QuestionBrief;
+const stateToProps = (state) => {
+    return {
+        quesData: state.quesData
+    }
+}
+
+
+export default connect(stateToProps)(QuestionBrief);
