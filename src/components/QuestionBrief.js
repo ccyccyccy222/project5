@@ -4,28 +4,28 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
-const data = [
-    {
-        // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-        author: 'Han Solo',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: (
-            <p>
-                近代史怎么考呀？考哪里呀？
-            </p>
-        )
-    },
-    {
-        // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-        author: 'Han Solo',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: (
-            <p>
-                为什么说辛亥革命的果实被袁世凯窃取了？
-            </p>
-        )
-    },
-];
+// const data = [
+//     {
+//         // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+//         author: 'Han Solo',
+//         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+//         content: (
+//             <p>
+//                 近代史怎么考呀？考哪里呀？
+//             </p>
+//         )
+//     },
+//     {
+//         // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+//         author: 'Han Solo',
+//         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+//         content: (
+//             <p>
+//                 为什么说辛亥革命的果实被袁世凯窃取了？
+//             </p>
+//         )
+//     },
+// ];
 
 const QuestionBrief=(props)=>{
     let{quesData}=props
@@ -40,9 +40,9 @@ const QuestionBrief=(props)=>{
                     <li>
                         <Comment
                             actions={item.actions}
-                            author={item.author}
-                            avatar={item.avatar}
-                            content={item.content}
+                            author={item.asker}
+                            avatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                            content={item.title}
                         />
                     </li>
                 </Link>

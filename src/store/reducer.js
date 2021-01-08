@@ -1,6 +1,39 @@
 import React from "react";
 
 const initialState = {
+    homeBook: [
+        {
+            bid: "29347398",
+            picture: "/img/discreteMathematics.jpg",
+            name: "离散数学及其应用"
+        },
+        {
+            bid: "29347398",
+            picture: "/img/discreteMathematics.jpg",
+            name: "离散数学及其应用"
+        },
+        {
+            bid: "29347398",
+            picture: "/img/discreteMathematics.jpg",
+            name: "离散数学及其应用"
+        },
+        {
+            bid: "29347398",
+            picture: "/img/discreteMathematics.jpg",
+            name: "离散数学及其应用"
+        }
+    ],
+    desBook:
+        {
+            picture: "/img/discreteMathematics.jpg",
+            name: "离散数学及其应用",
+            author: "Kenneth H.Rosen",
+            press: "机械工业出版社",
+            time: "2012-11",
+            subject: "数学",
+            ISBN: "9787111385509"
+        },
+
     userName: "abc",
     loginMVisible: false,
     ifLogin: false,
@@ -8,31 +41,29 @@ const initialState = {
     replyInputValue: '',
     replyData: [
         {
-            author: 'Han Solo',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: "除了后边新中国成立等等没学过的知识外，其他全考，加油吧！\n"
+            asker: 'Han Solo',
+            // avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            title: "除了后边新中国成立等等没学过的知识外，其他全考，加油吧！\n"
         },
         {
-            author: 'Han Solo',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: "好好看老师的ppt，上面都有的，考试范围也有\n"
+            asker: 'Han Solo',
+            // avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            title: "好好看老师的ppt，上面都有的，考试范围也有\n"
         }
     ],
-    questionMVisible:false,
-    question:'',
-    questionDes:'',
+    questionMVisible: false,
+    question: '',
+    questionDes: '',
     quesData: [
         {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: 'Han Solo',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: '近代史怎么考呀？考哪里呀？\n'
+            asker: 'Han Solo',
+            title: '近代史怎么考呀？考哪里呀？\n'
         },
         {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: 'Han Solo',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: '为什么说辛亥革命的果实被袁世凯窃取了？\n'
+            asker: 'Han Solo',
+            title: '为什么说辛亥革命的果实被袁世凯窃取了？\n'
         }
     ]
 }
@@ -72,7 +103,7 @@ export default (state = initialState, action) => {
     }
     if (action.type === 'SUB_LOGIN_FORM') {
         newState.userName = action.loginValue.username
-        newState.ifLogin=true
+        newState.ifLogin = true
         console.log("newState.userName:")
         console.log(newState.userName)
     }
@@ -97,7 +128,6 @@ export default (state = initialState, action) => {
         newState.quesData.push(quesItem);
 
     }
-
 
 
     return newState

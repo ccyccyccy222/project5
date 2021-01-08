@@ -47,6 +47,7 @@ const dispatchToProps = (dispatch) => {
         addReply(){
             console.log("In addReply");
             dispatch(addRelyItem())
+            dispatch(setReplyModalVisible(false))
         }
     }
 }
