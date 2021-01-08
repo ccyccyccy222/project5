@@ -41,19 +41,17 @@ class ReplyBrief extends Component{
 
     componentDidMount(){
         console.log("In componentDidMount ReplyBrief");
-        const _this=this;    //先存一下this，以防使用箭头函数this会指向我们不希望它所指向的对象。
+        let _this=this;
         axios.get("http://localhost:8080/webapp5/info/comment-get?pid=5")
             .then(function (response) {
                 let a=response.data;
                 console.log("replyBrief:");
                 console.log(a);
-                console.log("JSON.parse(a)");
-                console.log(JSON.parse(a));
-                // _this.setState({
-                //         quesData:a
-                //     }
-                //     // isLoaded:true
-                // );
+                _this.setState(
+                    {
+                        replyData: a
+                    }
+                )
             })
             .catch(function (error) {
                 console.log(error);

@@ -1,4 +1,4 @@
-import {Breadcrumb, Button} from 'antd';
+import {Breadcrumb, Button, List} from 'antd';
 import React, {Component} from "react";
 import "../home.css";
 import lisan from '../img/lisan.jpg';
@@ -47,8 +47,6 @@ class Home extends Component {
         //         // })
         //     })
     }
-
-    // let{setLoginModal,userName}=props
 
     render() {
         return (
@@ -102,18 +100,26 @@ class Home extends Component {
                             <p>&nbsp;&nbsp;热门问题</p>
                             <hr/>
                             <div className="gundong">
-                                <ul id="comment1">
-                                    <li>第一条</li>
-                                    <li>第二条</li>
-                                    <li>第三条</li>
-                                    <li>第四条</li>
-                                    <li>第五条</li>
-                                    <li>第六条</li>
-                                    <li>第七条</li>
-                                    <li>第八条</li>
-                                    <li>第九条</li>
-                                </ul>
-                                <ul id="comment2"></ul>
+                                <List
+                                dataSource={this.state.quesData}
+                                renderItem={item => (
+                                    <li>
+                                        {item.title}
+                                    </li>
+                                )}/>
+
+                                {/*<ul id="comment1">*/}
+                                {/*    <li>第一条</li>*/}
+                                {/*    <li>第二条</li>*/}
+                                {/*    <li>第三条</li>*/}
+                                {/*    <li>第四条</li>*/}
+                                {/*    <li>第五条</li>*/}
+                                {/*    <li>第六条</li>*/}
+                                {/*    <li>第七条</li>*/}
+                                {/*    <li>第八条</li>*/}
+                                {/*    <li>第九条</li>*/}
+                                {/*</ul>*/}
+                                {/*<ul id="comment2"></ul>*/}
                             </div>
 
                         </div>
@@ -140,6 +146,27 @@ class Home extends Component {
                 console.log(a);
                 _this.setState({
                         homeBook: a
+                    }
+                    // isLoaded:true
+                );
+                console.log("Home Array:a[0]");
+                console.log(a[0]);
+            })
+            .catch(function (error) {
+                console.log(error);
+                // _this.setState({
+                //     isLoaded:false,
+                //     error:error
+                // })
+            })
+        //问题的首页页面展示
+        axios.get('http://localhost:8080/webapp5/info/problem-list')
+            .then(function (response) {
+                let a = response.data;
+                console.log("Home Array Hot Question:");
+                console.log(a);
+                _this.setState({
+                        quesData: a
                     }
                     // isLoaded:true
                 );

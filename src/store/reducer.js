@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const initialState = {
     homeBook: [
@@ -33,7 +34,6 @@ const initialState = {
             subject: "数学",
             ISBN: "9787111385509"
         },
-
     userName: "abc",
     loginMVisible: false,
     ifLogin: false,
@@ -66,10 +66,10 @@ const initialState = {
             title: '为什么说辛亥革命的果实被袁世凯窃取了？\n'
         }
     ],
-    quesOne:{
-        asker:'',
-        title:'',
-        detail:''
+    quesOne: {
+        asker: '',
+        title: '',
+        detail: ''
     }
 }
 
@@ -91,15 +91,26 @@ export default (state = initialState, action) => {
     if (action.type === 'ADD_REPLY') {
         let replyItem = {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: newState.userName,
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: ''
+            pid:'5',
+            username: newState.userName,
+            detail: ''
         };
-        replyItem.content = state.replyInputValue;
-        newState.replyData.push(replyItem);
+        replyItem.detail = state.replyInputValue;
+        // newState.replyData.push(replyItem);
         newState.replyInputValue = ''
         console.log("newState. replyInputValue:")
         console.log(newState.replyInputValue)
+        console.log("replyItem:")
+        console.log(replyItem)
+        axios.get("http://localhost:8080/webapp5/info/comment-update", replyItem)
+            .then(function (response) {
+                let a = response.data;
+                console.log("Submit reply return:");
+                console.log(a);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
     if (action.type === 'LOGIN_MODAL_VISIBLE') {
         newState.loginMVisible = action.loginMVisible
@@ -126,11 +137,33 @@ export default (state = initialState, action) => {
         console.log(newState.questionDes)
         let quesItem = {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: newState.userName,
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: newState.question
+            bid: "29347398",
+            username: newState.userName,
+            title: newState.question,
+            detail: newState.questionDes
         };
-        newState.quesData.push(quesItem);
+        console.log("quesItem:");
+        console.log(quesItem);
+        axios.get("http://localhost:8080/webapp5/info/problem-update", quesItem)
+            .then(function (response) {
+                let a = response.data;
+                console.log("Submit form return:");
+                console.log(a);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        axios.get("http://localhost:8080/webapp5/info/problem-list?bid=29347398")
+            .then(function (response) {
+                let a=response.data;
+                console.log("questionBrief:");
+                console.log(a);
+               newState.quesData=a;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        // newState.quesData.push(quesItem);
 
     }
 

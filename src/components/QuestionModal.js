@@ -13,7 +13,7 @@ const QuestionModal=(props)=>{
 
     const [form] = Form.useForm();
 
-    let{questionMVisible,hideModal,onFinish}=props
+    let{questionMVisible,hideModal,onFinish,username}=props
 
         return (
             <Modal title="提问"
@@ -77,18 +77,6 @@ const dispatchToProps = (dispatch) => {
         },
         onFinish(value){
             dispatch(submitQuestionValue(value))
-            let data={"title":value.question,"detail":value.questionDes,"username":this.store.getState().userName,"bid":"29347398"};
-            console.log("Finish form data:");
-            console.log(data);
-            axios.post("http://localhost:8080/webapp5/info/problem-update", data)
-                .then(function (response) {
-                    let a = response.data;
-                    console.log("Finish form:");
-                    console.log(a);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
             // this.props.formForm.resetFields();
             Modal.success({
                 content: '提交成功！',
