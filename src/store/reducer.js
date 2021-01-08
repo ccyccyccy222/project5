@@ -41,14 +41,14 @@ const initialState = {
     replyInputValue: '',
     replyData: [
         {
-            asker: 'Han Solo',
+            answer: 'Han Solo',
             // avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            title: "除了后边新中国成立等等没学过的知识外，其他全考，加油吧！\n"
+            detail: "除了后边新中国成立等等没学过的知识外，其他全考，加油吧！\n"
         },
         {
-            asker: 'Han Solo',
+            answer: 'Han Solo',
             // avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            title: "好好看老师的ppt，上面都有的，考试范围也有\n"
+            detail: "好好看老师的ppt，上面都有的，考试范围也有\n"
         }
     ],
     questionMVisible: false,
@@ -65,7 +65,12 @@ const initialState = {
             asker: 'Han Solo',
             title: '为什么说辛亥革命的果实被袁世凯窃取了？\n'
         }
-    ]
+    ],
+    quesOne:{
+        asker:'',
+        title:'',
+        detail:''
+    }
 }
 
 
