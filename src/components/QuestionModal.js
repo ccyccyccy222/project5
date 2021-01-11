@@ -13,7 +13,7 @@ const QuestionModal=(props)=>{
 
     const [form] = Form.useForm();
 
-    let{questionMVisible,hideModal,onFinish,username}=props
+    let{questionMVisible,hideModal,onFinish2,username}=props
 
         return (
             <Modal title="提问"
@@ -34,7 +34,7 @@ const QuestionModal=(props)=>{
                     name="normal_login"
                     className="login-form"
                     initialValues={{ remember: true }}
-                    onFinish={onFinish}
+                    onFinish={(value)=>{onFinish2(value,username)}}
                 >
                     <Form.Item
                         name="question"
@@ -75,7 +75,26 @@ const dispatchToProps = (dispatch) => {
         hideModal() {
             dispatch(setQuestionModalVisible(false))
         },
-        onFinish(value){
+        onFinish2(value,username){
+            console.log("username in onFinish2");
+            console.log(username);
+            let str="http://localhost:8080/webapp5/info/problem-update?bid=\"29347398\"" +
+                "&username=\""+username+"\"&title=\""+value.question+"\"&detail=\""+value.questionDes+"\"";
+            console.log("value:");
+            console.log(value);
+            console.log("value.question:");
+            console.log(value.question);
+            console.log("str:");
+            console.log(str);
+            axios.get(str)
+                .then(function (response) {
+                    let a = response.data;
+                    console.log("Submit form return:");
+                    console.log(a);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
             dispatch(submitQuestionValue(value))
             // this.props.formForm.resetFields();
             Modal.success({

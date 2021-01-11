@@ -21,6 +21,7 @@ class Question extends Component{
     }
 
     render() {
+        console.log("In Question render");
         const content = (
             <>
                 <Paragraph>
@@ -68,7 +69,7 @@ class Question extends Component{
                         </div>
                     </div>
                 </div>
-                <ReplyModal/>
+                {/*<ReplyModal/>*/}
             </div>
         )
     }

@@ -90,19 +90,21 @@ export default (state = initialState, action) => {
     }
     if (action.type === 'ADD_REPLY') {
         let replyItem = {
-            // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            pid:'5',
-            username: newState.userName,
+            pid: "5",
+            answer: newState.userName,
             detail: ''
         };
         replyItem.detail = state.replyInputValue;
         // newState.replyData.push(replyItem);
+        // newState.replyData = [...newState.replyData, replyItem];
         newState.replyInputValue = ''
         console.log("newState. replyInputValue:")
         console.log(newState.replyInputValue)
         console.log("replyItem:")
         console.log(replyItem)
-        axios.get("http://localhost:8080/webapp5/info/comment-update", replyItem)
+        let str = "http://localhost:8080/webapp5/info/comment-update?pid=\"" + replyItem.pid +
+            "\"&username=\"" + newState.userName + "\"&detail=\"" + replyItem.detail + "\"";
+        axios.get(str)
             .then(function (response) {
                 let a = response.data;
                 console.log("Submit reply return:");
@@ -137,34 +139,12 @@ export default (state = initialState, action) => {
         console.log(newState.questionDes)
         let quesItem = {
             // actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            bid: "29347398",
-            username: newState.userName,
-            title: newState.question,
-            detail: newState.questionDes
+            asker: newState.userName,
+            title: newState.question
         };
-        console.log("quesItem:");
-        console.log(quesItem);
-        axios.get("http://localhost:8080/webapp5/info/problem-update", quesItem)
-            .then(function (response) {
-                let a = response.data;
-                console.log("Submit form return:");
-                console.log(a);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        axios.get("http://localhost:8080/webapp5/info/problem-list?bid=29347398")
-            .then(function (response) {
-                let a=response.data;
-                console.log("questionBrief:");
-                console.log(a);
-               newState.quesData=a;
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        // newState.quesData.push(quesItem);
-
+        newState.quesData.push(quesItem);
+        console.log("newState.quesData:");
+        console.log(newState.quesData);
     }
 
 

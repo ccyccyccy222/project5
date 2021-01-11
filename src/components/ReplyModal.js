@@ -47,8 +47,12 @@ const dispatchToProps = (dispatch) => {
         addReply(){
             console.log("In addReply");
             dispatch(addRelyItem())
+            Modal.success({
+                content: '提交成功！',
+            });
             dispatch(setReplyModalVisible(false))
         }
+
     }
 }
 

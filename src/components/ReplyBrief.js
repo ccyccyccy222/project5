@@ -6,6 +6,8 @@ import {setReplyModalVisible} from "../actions";
 import {connect} from "react-redux";
 import store from "../store";
 import axios from "axios";
+import ReplyModal from "./ReplyModal";
+
 
 
 class ReplyBrief extends Component{
@@ -15,24 +17,30 @@ class ReplyBrief extends Component{
     }
 
     render() {
+        console.log("In ReplyBrief render");
         return(
-            <List
-                className="comment-list"
-                header={`${this.state.replyData.length} replies`}
-                itemLayout="horizontal"
-                dataSource={this.state.replyData}
-                renderItem={item => (
-                    <li>
-                        <Comment
-                            actions={item.actions}
-                            author={item.answer}
-                            avatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            content={item.detail}
-                        />
-                    </li>
-                )}
-            />
-        )
+            <div>
+                <List
+                    className="comment-list"
+                    header={`${this.state.replyData.length} replies`}
+                    itemLayout="horizontal"
+                    dataSource={this.state.replyData}
+                    renderItem={item => (
+                        <li>
+                            <Comment
+                                actions={item.actions}
+                                author={item.answer}
+                                avatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                content={item.detail}
+                            />
+                        </li>
+                    )}
+                />
+                <ReplyModal/>
+            </div>
+
+
+    )
     }
 
     hideModal() {

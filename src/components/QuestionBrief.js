@@ -30,12 +30,14 @@ import axios from "axios";
 // ];
 
 class QuestionBrief extends Component{
+
     constructor(props) {
         super(props);
         this.state = store.getState();
     }
 
     render() {
+        console.log("In QuestionBrief");
         return(
             <List
                 className="comment-list"
